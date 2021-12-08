@@ -10,7 +10,7 @@ module.exports = {
                 if (err) return res.sendStatus(500);
                 return res.send({
                     item: {
-                        item_id: result.insertId,
+                        id: result.insertId,
                         category_id: req.body.item.category_id,
                         title: req.body.item.title,
                         description: req.body.item.description,
@@ -31,7 +31,7 @@ module.exports = {
     },
     // UPDATE
     update(req, res, next) {
-        db.query(`UPDATE items SET category_id=?, title=?, description=?, price=?, quantity=?, sku=? WHERE item_id=?`,
+        db.query(`UPDATE items SET category_id=?, title=?, description=?, price=?, quantity=?, sku=? WHERE id=?`,
             [req.body.item.category_id, req.body.item.title, req.body.item.description, req.body.item.price, req.body.item.quantity, req.body.item.sku, req.params.item],
             (err, result) => {
                 if (err) return res.sendStatus(500);

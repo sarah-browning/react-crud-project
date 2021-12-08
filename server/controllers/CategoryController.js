@@ -7,11 +7,12 @@ module.exports = {
             [req.body.category.title],
             (err, result) => {
                 console.log("result: "+ JSON.stringify(result));
+                // if (err) return res.send("Create Error")
                 if (err) return res.sendStatus(500);
                 return res.send({
                     category: {
-                        category_id: result.insertId,
-                        title: req.body.category.title,                     
+                        id: result.insertId,
+                        title: req.body.category.title                   
                     }
                 });
             } 
@@ -20,8 +21,9 @@ module.exports = {
     // RETRIEVE
     index(req, res, next) {
         db.query(`SELECT * FROM categories`, (err, results) => {
-          if (err) return res.sendStatus(500);
-          return res.send({ categories: results });  
+        if (err) return res.send("Retrieve Error")
+        // if (err) return res.sendStatus(500);
+        return res.send({ categories: results });  
         });
     },
     // UPDATE
@@ -29,6 +31,7 @@ module.exports = {
         db.query(`UPDATE categories SET title=? WHERE id=?`,
             [req.body.category.title, req.params.category],
             (err, result) => {
+                // if (err) return res.send("Update Error")
                 if (err) return res.sendStatus(500);
                 return res.sendStatus(200);
             }
@@ -39,6 +42,7 @@ module.exports = {
         db.query(`DELETE FROM categories WHERE id=?`,
             [req.params.category],
             (err, result) => {
+                // if (err) return res.send("Delete Error")
                 if (err) return res.sendStatus(500);
                 return res.sendStatus(200);
             }
