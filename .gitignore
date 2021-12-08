@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/src/components/blankFiles
 /.pnp
 .pnp.js
 
