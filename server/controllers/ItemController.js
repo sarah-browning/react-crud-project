@@ -1,39 +1,45 @@
 const db = require("../connection");
 
 module.exports = {
+    // CREATE
+    store(req, res, next) {
+        db.query(`INSERT INTO items (category_id, title, description, price, quantity, sku) VALUES (?,?,?,?,?,?)`,
+            [req.body.item.category_id, req.body.item.title, req.body.item.description, req.body.item.price, req.body.item.quantity, req.body.item.sku],
+            (err, result) => {
+                console.log("result: "+ JSON.stringify(result));
+                if (err) return res.sendStatus(500);
+                return res.send({
+                    item: {
+                        item_id: result.insertId,
+                        category_id: req.body.item.category_id,
+                        title: req.body.item.title,
+                        description: req.body.item.description,
+                        price: req.body.item.price,
+                        quantity: req.body.item.quantity,
+                        sku: req.body.item.sku                        
+                    }
+                });
+            } 
+        );
+    },
+    // RETRIEVE
     index(req, res, next) {
         db.query(`SELECT * FROM items`, (err, results) => {
           if (err) return res.sendStatus(500);
           return res.send({ items: results });  
         });
     },
-    store(req, res, next) {
-        db.query(`INSERT INTO items (value1, value2, value3) VALUES (?,?,?)`,
-            [req.body.item.value1, req.body.item.value2, req.body.item.value3],
-            (err, result) => {
-                console.log("result: "+ JSON.stringify(result));
-                //if (err) throw err;
-                if (err) return res.sendStatus(500);
-                return res.send({
-                    item: {
-                        id: result.insertId,
-                        value1: req.body.item.value1,
-                        value2: req.body.item.value2,
-                        value3: req.body.item.value3
-                    }
-                });
-            } 
-        );
-    }, 
+    // UPDATE
     update(req, res, next) {
-        db.query(`UPDATE items SET value1=?, value2=?, value3=? WHERE id=?`,
-            [req.body.item.value1, req.body.item.value2, req.body.item.value3, req.params.item],
+        db.query(`UPDATE items SET category_id=?, title=?, description=?, price=?, quantity=?, sku=? WHERE item_id=?`,
+            [req.body.item.category_id, req.body.item.title, req.body.item.description, req.body.item.price, req.body.item.quantity, req.body.item.sku, req.params.item],
             (err, result) => {
                 if (err) return res.sendStatus(500);
                 return res.sendStatus(200);
             }
         );
-    }, 
+    },
+    // DELETE
     destroy(req, res, next) {
         db.query(`DELETE FROM items WHERE id=?`,
             [req.params.item],
