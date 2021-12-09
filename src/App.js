@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import AddForm from './components/items/AddForm';
 /* 
     For this project, you will create the CRUD functionality for an inventory system.
