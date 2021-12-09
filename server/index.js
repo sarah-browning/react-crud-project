@@ -9,7 +9,8 @@ server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
 
 //routes
-server.get('/', (req, res) => res.send("Hello!"));
+server.get('/', (req, res) =>
+    res.send("Hello!"));
 server.use('/', routes);
 
 server.listen(port, () => console.log(`Express running on port: ${port}...`));

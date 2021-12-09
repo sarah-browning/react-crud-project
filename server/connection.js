@@ -5,7 +5,7 @@ const conn = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "",
-    database: "reactproject"
+    database: "react_crud_project"
 });
 
 conn.connect();
