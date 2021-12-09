@@ -1,0 +1,25 @@
+table {
+    font-size: calc(10px + 1vmin);
+}
+
+th, tr, td {
+    padding: 10px;
+}
+
+th {
+    text-align: center;
+}
+
+.index {
+    width: 25px;
+    text-align: center;
+}
+
+.firstName, .lastName {
+    width: 200px;
+}
+
+.email {
+    width: 350px;
+}
+
