@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import AddItemForm from './components/items/AddForm';
+import EditItemForm from './components/items/EditForm';
 import ItemTable from './components/items/Table';
 import api from './api';
-// import Table from './components/categories/Table';
 /* 
     For this project, you will create the CRUD functionality for an inventory system.
     You will create the functionality to add, edit, and delete items and item categories.
@@ -16,7 +16,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      entries: []
+      entries: [],
+      editingItem: null
     };
   }
 
@@ -51,45 +52,49 @@ class App extends Component {
       });
   }
 
-  // _editEntry = entry => {
-  //   this.setState({
-  //     editingItem: entry
-  //   });
-  // }
+  // EDIT ENTRY
+  _editEntry = entry => {
+    this.setState({
+      editingItem: entry
+    });
+  }
 
-  // _updateEntry = entry => {
-  //   api.updateItem(entry)
-  //      .then( () => {
-  //        this.setState({
-  //           editingItem: null,
-  //           entries: [...this.state.entries].map(i => {
-  //             if (i.id === entry.id) {
-  //               return entry;
-  //             } else {
-  //               return i;
-  //             }
-  //           })
-  //        });
-  //      })
-  //      .catch( err => {
-  //         console.log ('Failed to update item');
-  //         throw err;
-  //      });
-  // }
+  // UPDATE ENTRY
+  _updateEntry = entry => {
+    api.updateItem(entry)
+       .then( () => {
+         this.setState({
+            editingItem: null,
+            entries: [...this.state.entries].map(i => {
+              if (i.id === entry.id) {
+                return entry;
+              } else {
+                return i;
+              }
+            })
+         });
+       })
+       .catch( err => {
+          console.log ('Failed to update item');
+          throw err;
+       });
+  }
 
-  // _deleteEntry = entry => {
-  //   api.deleteItem(entry)
-  //      .then( () => {
-  //        this.setState({
-  //          entries: [...this.state.entries].filter( i => i.id != entry.id )
-  //        });
-  //      })
-  //      .catch( err => {
-  //       console.log ('Failed to delete item');
-  //       throw err;
-  //    });
-  // }
+  // DELETE ENTRY
+  _deleteEntry = entry => {
+    api.deleteItem(entry)
+       .then( () => {
+         this.setState({
+           entries: [...this.state.entries].filter( i => i.id !== entry.id )
+         });
+       })
+       .catch( err => {
+        console.log ('Failed to delete item');
+        throw err;
+     });
+  }
 
+  // RENDER APP
   render() {
     return (
       <div className='App'>
@@ -99,9 +104,14 @@ class App extends Component {
           <br />
           <a href='/categories'>Categories</a>
           <br />
-          <AddItemForm onAddEntry={ this._addEntry } />
+
+          { this.state.editingItem ? (
+            <EditItemForm onUpdateEntry={ this._updateEntry } editing={ this.state.editingItem } />
+          ) : (
+            <AddItemForm onAddEntry={ this._addEntry } />
+          )}
           <br />
-          <ItemTable entries={ this.state.entries } />
+          <ItemTable entries={ this.state.entries } onEditItem={this._editEntry} onDeleteItem={this._deleteEntry} />
       </div>
     );
   }
