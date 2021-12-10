@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from './Button';
-import './Form.css';
+import '../css/Form.css';
 
 //  Initializes constructor and sets object state
 class AddForm extends Component {

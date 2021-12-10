@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import AddItemForm from './components/items/AddForm';
 import ItemTable from './components/items/Table';
@@ -12,7 +12,7 @@ import api from './api';
     Your app should start by displaying a page of links (one to manage categories and one to manage items).
     Use react router to load the content for each management area.
  */
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
