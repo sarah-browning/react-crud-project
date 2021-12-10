@@ -13,7 +13,7 @@ class AddForm extends Component {
             price: '',
             quantity: '',
             sku: ''
-          }
+          };
     }
 
     // Adds entry to state array and then clears values
