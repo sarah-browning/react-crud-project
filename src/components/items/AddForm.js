@@ -16,7 +16,7 @@ class AddForm extends Component {
           }
     }
 
-    // Adds entry to array and then clears values
+    // Adds entry to state array and then clears values
     _add = () => {
         console.log('_add fired');
         // console.log('_add ' + JSON.stringify(this.state));
@@ -78,7 +78,7 @@ class AddForm extends Component {
                     event => this._handleTextChange('sku', event.target.value)
                  }/>
                  <br />
-                 <Button title="Add Item" onClick={ this._add }/>
+                 <Button title="Add Item" onClick={ this._add } />
             </div>
         );
     }

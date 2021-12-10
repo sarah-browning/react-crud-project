@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import AddForm from './components/items/AddForm';
+import api from './api';
 // import Table from './components/categories/Table';
 /* 
     For this project, you will create the CRUD functionality for an inventory system.
@@ -20,26 +21,27 @@ class App extends React.Component {
 
   // ADD ENTRY
   _addEntry = entry => {
-    this.setState({
-      entries: [...this.state.entries, entry]
-    });
+    // this.setState({
+    //   entries: [...this.state.entries, entry]
+    // });
+
+    api.addItem(entry)
+      .then(result => {
+        console.log('result.data.item: '+JSON.stringify(result.data.item));
+        this.setState({
+          entries: [...this.state.entries, result.data.item]
+        });
+      })
+      .then(()=>{
+        console.log(this.state.entries);
+      })
+      .catch( err => {
+        console.log ('Failed to add to database');
+        throw err;
+      });
   }
 
-  //   api.addItem(entry)
-  //     .then(result => {
-  //       console.log('result.data.item: '+JSON.stringify(result.data.item));
-  //       this.setState({
-  //         entries: [...this.state.entries, result.data.item]
-  //       });
-  //     })
-  //     .then(()=>{
-  //       console.log(this.state.entries);
-  //     })
-  //     .catch( err => {
-  //       console.log ('Failed to add to database');
-  //       throw err;
-  //     });  
-  // }
+    
 
   // _editEntry = entry => {
   //   this.setState({
