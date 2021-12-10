@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import AddForm from './components/items/AddForm';
+import AddItemForm from './components/items/AddForm';
+import ItemTable from './components/items/Table';
 import api from './api';
 // import Table from './components/categories/Table';
 /* 
@@ -19,12 +20,21 @@ class App extends React.Component {
     };
   }
 
+  // LOAD ENTRIES
+  componentDidMount() {
+    api.fetchItems()
+      .then(results => {
+        this.setState({
+          entries: results.data.items
+        });
+      })
+      .catch(err => {
+        console.log('Failed to retrieve the items');
+      });
+  }
+
   // ADD ENTRY
   _addEntry = entry => {
-    // this.setState({
-    //   entries: [...this.state.entries, entry]
-    // });
-
     api.addItem(entry)
       .then(result => {
         console.log('result.data.item: '+JSON.stringify(result.data.item));
@@ -40,8 +50,6 @@ class App extends React.Component {
         throw err;
       });
   }
-
-    
 
   // _editEntry = entry => {
   //   this.setState({
@@ -85,11 +93,15 @@ class App extends React.Component {
   render() {
     return (
       <div className='App'>
+          <a href="/">Home</a>
+          <br />
           <a href="/items">Items</a>
           <br />
           <a href='/categories'>Categories</a>
           <br />
-          <AddForm onAddEntry={ this._addEntry } />
+          <AddItemForm onAddEntry={ this._addEntry } />
+          <br />
+          <ItemTable entries={ this.state.entries } />
       </div>
     );
   }
