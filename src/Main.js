@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import './Main.css';
+import './App.css';
+// import AddItemForm from './components/items/AddForm';
+// import EditItemForm from './components/items/EditForm';
+// import ItemTable from './components/items/Table';
+// import AddCategoryForm from './components/categories/AddForm';
+// import EditCategoryForm from './components/categories/EditForm';
+// import CategoryTable from './components/categories/Table';
+// import api from './api';
 
 class Main extends Component {
   constructor(props) {
