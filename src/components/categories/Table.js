@@ -10,6 +10,8 @@ class Table extends Component {
                         <tr>
                             <th className="id">#</th>
                             <th className="title">Category Title</th>
+                            <th className="edit">Edit</th>
+                            <th className="delete">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -19,7 +21,10 @@ class Table extends Component {
                                     <tr key={index}>
                                         <td className="id">{index + 1}</td>
                                         <td className="title">{entry.title}</td>
+                                        <td><button onClick={() => this.props.onEditItem(entry)}>Edit</button></td>
+                                        <td><button onClick={() => this.props.onDeleteItem(entry)}>Delete</button></td>
                                     </tr>
+                                    
                                 )
                             )
                         }

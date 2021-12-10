@@ -15,6 +15,8 @@ class Table extends Component {
                             <th className="price">Item Price ($)</th>
                             <th className="quantity">Item Quantity</th>
                             <th className="sku">Item SKU</th>
+                            <th className="edit">Edit</th>
+                            <th className="delete">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +31,8 @@ class Table extends Component {
                                         <td className="price">{entry.price}</td>
                                         <td className="quantity">{entry.quantity}</td>
                                         <td className="sku">{entry.sku}</td>
+                                        <td><button onClick={() => this.props.onEditItem(entry)}>Edit</button></td>
+                                        <td><button onClick={() => this.props.onDeleteItem(entry)}>Delete</button></td>
                                     </tr>
                                 )
                             )

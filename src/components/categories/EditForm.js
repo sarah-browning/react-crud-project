@@ -42,7 +42,7 @@ class EditForm extends Component {
                     event => this._handleTextChange('title', event.target.value)
                 } />
                 <br />
-                 <Button title="Edit Item"/>
+                 <Button title="Edit Category"/>
             </div>
         );
     }

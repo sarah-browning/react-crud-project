@@ -1,5 +1,6 @@
 import React from 'react';
 import AddForm from './components/items/AddForm';
+// import Table from './components/categories/Table';
 /* 
     For this project, you will create the CRUD functionality for an inventory system.
     You will create the functionality to add, edit, and delete items and item categories.
@@ -11,8 +12,12 @@ import AddForm from './components/items/AddForm';
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <AddForm />
+      <div className='App'>
+          <a href="/items">Items</a>
+          <br />
+          <a href='/categories'>Categories</a>
+          <br />
+          <AddForm />
       </div>
     );
   }
