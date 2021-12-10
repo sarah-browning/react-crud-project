@@ -90,7 +90,7 @@ class Item extends Component {
   // RENDER APP
   render() {
     return (
-      <div className='App'>
+      <div className='Item'>
           <a href="/">Home</a>
           <br />
           <a href="/items">Items</a>
