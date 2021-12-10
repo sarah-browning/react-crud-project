@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import AddForm from './components/items/AddForm';
 // import Table from './components/categories/Table';
 /* 
@@ -10,6 +11,75 @@ import AddForm from './components/items/AddForm';
     Use react router to load the content for each management area.
  */
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      entries: []
+    };
+  }
+
+  // ADD ENTRY
+  _addEntry = entry => {
+    this.setState({
+      entries: [...this.state.entries, entry]
+    });
+  }
+
+  //   api.addItem(entry)
+  //     .then(result => {
+  //       console.log('result.data.item: '+JSON.stringify(result.data.item));
+  //       this.setState({
+  //         entries: [...this.state.entries, result.data.item]
+  //       });
+  //     })
+  //     .then(()=>{
+  //       console.log(this.state.entries);
+  //     })
+  //     .catch( err => {
+  //       console.log ('Failed to add to database');
+  //       throw err;
+  //     });  
+  // }
+
+  // _editEntry = entry => {
+  //   this.setState({
+  //     editingItem: entry
+  //   });
+  // }
+
+  // _updateEntry = entry => {
+  //   api.updateItem(entry)
+  //      .then( () => {
+  //        this.setState({
+  //           editingItem: null,
+  //           entries: [...this.state.entries].map(i => {
+  //             if (i.id === entry.id) {
+  //               return entry;
+  //             } else {
+  //               return i;
+  //             }
+  //           })
+  //        });
+  //      })
+  //      .catch( err => {
+  //         console.log ('Failed to update item');
+  //         throw err;
+  //      });
+  // }
+
+  // _deleteEntry = entry => {
+  //   api.deleteItem(entry)
+  //      .then( () => {
+  //        this.setState({
+  //          entries: [...this.state.entries].filter( i => i.id != entry.id )
+  //        });
+  //      })
+  //      .catch( err => {
+  //       console.log ('Failed to delete item');
+  //       throw err;
+  //    });
+  // }
+
   render() {
     return (
       <div className='App'>
@@ -17,7 +87,7 @@ class App extends React.Component {
           <br />
           <a href='/categories'>Categories</a>
           <br />
-          <AddForm />
+          <AddForm onAddEntry={ this._addEntry } />
       </div>
     );
   }
