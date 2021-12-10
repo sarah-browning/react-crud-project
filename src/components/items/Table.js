@@ -15,8 +15,6 @@ class Table extends Component {
                             <th className="price">Item Price ($)</th>
                             <th className="quantity">Item Quantity</th>
                             <th className="sku">Item SKU</th>
-                            <th className="edit">Edit</th>
-                            <th className="delete">Delete</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -10,8 +10,6 @@ class Table extends Component {
                         <tr>
                             <th className="id">#</th>
                             <th className="title">Category Title</th>
-                            <th className="edit">Edit</th>
-                            <th className="delete">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
