@@ -1,20 +1,22 @@
+.addForm, .editForm {
+  width: 100%;
+}
 
 input, label {
   font-size: calc(12px + 1vmin);
   padding: 5px;
-  margin: 5px;
+  margin-top: 16px;
   display: inline-block;
   clear: left;
 }
 
 input {
   width: 275px;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 label {
   font-weight: 600;
   width: 125px;
-  margin-left: 15px;
   text-align: left;
 }

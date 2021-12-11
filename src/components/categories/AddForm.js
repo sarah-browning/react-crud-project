@@ -38,7 +38,7 @@ class AddForm extends Component {
     // Displays the AddForm
     render() { 
         return ( 
-            <div>
+            <div className='addForm'>
                 <label>Title</label>
                 <input type="text" placeholder="Enter Title" value={this.state.title} onChange={
                     event => this._handleTextChange('title', event.target.value)

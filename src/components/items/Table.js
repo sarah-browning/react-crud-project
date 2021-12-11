@@ -5,7 +5,7 @@ class Table extends Component {
     render() {
         return(
             <div>
-                <table>
+                <table className="itemTable">
                     <thead> 
                         <tr>
                             <th className="id">#</th>
@@ -29,8 +29,8 @@ class Table extends Component {
                                         <td className="price">{entry.price}</td>
                                         <td className="quantity">{entry.quantity}</td>
                                         <td className="sku">{entry.sku}</td>
-                                        <td><button onClick={() => this.props.onEditItem(entry)}>Edit</button></td>
-                                        <td><button onClick={() => this.props.onDeleteItem(entry)}>Delete</button></td>
+                                        <td className="button"><button onClick={() => this.props.onEditItem(entry)}>Edit</button></td>
+                                        <td className="button"><button onClick={() => this.props.onDeleteItem(entry)}>Delete</button></td>
                                     </tr>
                                 )
                             )
