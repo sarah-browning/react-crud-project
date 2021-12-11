@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Main.css';
+import './App.css';
 import AddForm from './components/items/AddForm';
 import EditForm from './components/items/EditForm';
 import Table from './components/items/Table';
@@ -27,7 +27,7 @@ class Item extends Component {
       });
   }
 
-  // ADD ENTRY
+  // ADD ITEM ENTRY
   _addItemEntry = entry => {
     api.addItem(entry)
       .then(result => {
@@ -45,14 +45,14 @@ class Item extends Component {
       });
   }
 
-  // EDIT ENTRY
+  // EDIT ITEM ENTRY
   _editItemEntry = entry => {
     this.setState({
       editingItem: entry
     });
   }
 
-  // UPDATE ENTRY
+  // UPDATE ITEM ENTRY
   _updateItemEntry = entry => {
     api.updateItem(entry)
        .then( () => {
@@ -73,7 +73,7 @@ class Item extends Component {
        });
   }
 
-  // DELETE ENTRY
+  // DELETE ITEM ENTRY
   _deleteItemEntry = entry => {
     api.deleteItem(entry)
        .then( () => {
@@ -87,17 +87,10 @@ class Item extends Component {
      });
   }
 
-  // RENDER APP
+  // RENDER ITEM PAGE
   render() {
     return (
       <div className='Item'>
-          <a href="/">Home</a>
-          <br />
-          <a href="/items">Items</a>
-          <br />
-          <a href='/categories'>Categories</a>
-          <br />
-
           { this.state.editingItem ? (
             <EditForm onUpdateEntry={ this._updateItemEntry } editing={ this.state.editingItem } />
           ) : (

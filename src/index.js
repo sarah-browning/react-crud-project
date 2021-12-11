@@ -1,17 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-// import './index.css';
-import Main from './Main';
-import reportWebVitals from './reportWebVitals';
+import { render } from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import App from './App';
+import Categories from './Categories';
+import Items from './Items';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Main />
-  </React.StrictMode>,
-  document.getElementById('root')
+const rootElement = document.getElementById('root');
+render(
+  // Routing syntax changed due to changes added in React Router v6
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<App />}>
+        <Route path='categories' element={<Categories />} />
+        <Route path='items' element={<Items />} />
+        <Route path='*' element={"Error 404, Page not found"} />
+      </Route>
+    </Routes>
+  </BrowserRouter>,
+  rootElement  
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
