@@ -1,5 +1,8 @@
 table {
+    width: 100%;
     margin-top: 16;
+    margin-left: auto;
+    margin-right: auto;
     border: 1px solid black;
     font-size: calc(10px + 1vmin);
 }
@@ -12,15 +15,32 @@ th {
     text-align: center;
 }
 
+td, th {
+    border: 1px solid black;
+}
+
+.itemTable {
+    width: 100%;
+}
+
+.categoryTable {
+    width: 60%
+}
+
 .id, .category_id {
     width: 25px;
     text-align: center;
 }
 
-.title, .price, .quantity, .sku {
-    width: 200px;
+.title {
+    width: 400px;
+}
+
+.price, .quantity, .sku {
+    width: 80px;
+    text-align: center;
 }
 
 .description {
-    width: 350px;
+    width: 500px;
 }

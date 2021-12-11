@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Main.css';
+import './App.css';
 import AddForm from './components/categories/AddForm';
 import EditForm from './components/categories/EditForm';
 import CategoryTable from './components/categories/Table';
@@ -87,16 +87,10 @@ class Category extends Component {
        });
     }
 
-  // RENDER APP
+  // RENDER CATEGORY PAGE
   render() {
     return (
       <div className='Category'>
-          <a href="/">Home</a>
-          <br />
-          <a href="/items">Items</a>
-          <br />
-          <a href='/categories'>Categories</a>
-          <br />
           { this.state.editingCategory ? (
             <EditForm onUpdateEntry={ this._updateCategoryEntry } editing={ this.state.editingCategory } />
           ) : (

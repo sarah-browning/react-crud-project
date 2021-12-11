@@ -1,18 +1,19 @@
 button {
     font-size: calc(12px + 1vmin);
     font-weight: bold;
-    background: lightskyblue;
-    color:#000;
+    background: #000;
+    color: #FFF;
     margin-top: 20px;
-    margin-left: 155px;;
+    margin-left: auto;
+    margin-right: auto;
     padding: 5px 20px;
-    border:3px solid navy;
+    border:3px solid #000;
     border-radius:20px;
     box-shadow:5px 5px 5px #eee;
     text-shadow:none;
 }
 
 button:hover {
-    background: navy;
-    color:#fff;
+    background: #FFF;
+    color:#000;
 }

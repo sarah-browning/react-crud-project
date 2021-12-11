@@ -42,7 +42,7 @@ class EditForm extends Component {
     // Displays the EditForm
     render() { 
         return ( 
-            <div>
+            <div className='editForm'>
                 <label>Category ID</label>
                 <input type="text" placeholder="Enter Category ID" value={this.state.category_id} onChange={
                     event => this._handleTextChange('category_id', event.target.value)

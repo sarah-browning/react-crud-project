@@ -38,7 +38,7 @@ class EditForm extends Component {
     // Displays the EditForm
     render() { 
         return ( 
-            <div>
+            <div className='editForm'>
                 <label>Title</label>
                 <input type="text" placeholder="Enter Title" value={this.state.title} onChange={
                     event => this._handleTextChange('title', event.target.value)
