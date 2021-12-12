@@ -9,6 +9,8 @@
 # testing
 /coverage
 
+react_crud_project.sql
+
 # production
 /build
 
